@@ -9,3 +9,8 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
 # Proposal
 
 https://docs.google.com/document/d/1Eh71lubu4J4SXxOPYAtuUQO7x9CFO4OVhPkMom9wmQE/edit?tab=t.0
+
+# High-Level Design
+
+## Classes
+
