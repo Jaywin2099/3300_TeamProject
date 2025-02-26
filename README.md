@@ -38,7 +38,7 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
     ```
     > *If you ever edit your sign-in like in step 2 in the Quickstart Guide you will need to discard the change or update the config/build settings accordingly.*
 
-4. Set up your phone for Devloper Mode
+4. Set up your phone for Developer Mode
     1. In your iPhone Settings navigate to Privacy & Security > Developer Mode, switch your phone to Developer Mode and restart it
     2. Connect your iPhone to your Mac via. usb/usb-c
     3. In your iPhone Settings navigate to VPN & Device Management and under DEVELOPER APP click your apple_id associated with your development team and trust Swift Learning
