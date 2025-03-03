@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  SwiftLearning
-//
-//  Created by Jacob Winter on 2/28/25.
-//
-
 import UIKit
 import SwiftUI
 

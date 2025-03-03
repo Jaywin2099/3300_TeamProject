@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  SwiftLearning
-//
-//  Created by Jacob Winter on 2/28/25.
-//
-
 import SwiftUI
 import RealityKit
 
