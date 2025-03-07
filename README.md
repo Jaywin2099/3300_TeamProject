@@ -53,6 +53,8 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
     8. In the filter search bar enter DEVELOPMENT_TEAM
     9. Under Signing find DEVELOPMENT_TEAM and click the empty line next to it, replacing it with $(DEVELOPMENT_TEAM_ID)
     10. You should now see your BUNDLE_ID where the empty line was
+    > *You might have uncommited changes at this point. Those MUST be discarded before pushing anything else. *
+
 
 5. Set up your phone for Developer Mode
     1. In your iPhone Settings navigate to Privacy & Security > Developer Mode, switch your phone to Developer Mode and restart it
