@@ -54,12 +54,14 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
     9. Under Signing find DEVELOPMENT_TEAM and click the empty line next to it, replacing it with $(DEVELOPMENT_TEAM_ID)
     10. You should now see your BUNDLE_ID where the empty line was
 
-5. Set up your phone for Developer Mode
+    > *You might have uncommited changes at this point. Those MUST be discarded before pushing anything else.*
+
+6. Set up your phone for Developer Mode
     1. In your iPhone Settings navigate to Privacy & Security > Developer Mode, switch your phone to Developer Mode and restart it
     2. Connect your iPhone to your Mac via. usb/usb-c
     3. In your iPhone Settings navigate to VPN & Device Management and under DEVELOPER APP click your apple_id associated with your development team and trust Swift Learning
 
-6. Starting the app
+7. Starting the app
     1. Click the play/run button to the left of SwiftLearning
     2. Allow camera access on your phone when the app opens automatically and you're good to go!
 
