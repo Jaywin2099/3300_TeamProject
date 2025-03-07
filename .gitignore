@@ -1,5 +1,3 @@
 xcuserdata/
 *.DS_STORE
-*.xcconfig
-/Swift\ LearningUITests
-/Swift\ LearningTests
+Debug.xcconfig
