@@ -23,7 +23,7 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
     2. Navigate to the SwiftLearning Project Build (not the SwiftLearning directory)
     3. Under Targets select SwiftLearning
     4. Navigate to Signing and Capabilites in the toolbar
-    5. Under Signing select or create your own personal account (not team! do not pay!) and ensure the box for Automatically manage signing is checked
+    5. Under Signing select or create your own personal account (not team! do not pay to create an account!) and ensure the box for Automatically manage signing is checked
 
 3. Setup your config file
     1. Open xcode and navigate to the SwiftLearning Project
@@ -37,7 +37,7 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
       DEVELOPMENT_TEAM_ID = <YOUR_DEVELOPMENT_TEAM_NUMBER>
       /*
         - You don't need to put your first name for the BUNDLE_ID, just put something
-        there that doesn't make XCode say "bundle_id already registered to ..." or some bs like that
+          that doesn't make XCode say "bundle_id already registered to ..." or some bs like that
         - YOUR_DEVELOPMENT_TEAM_NUMBER is the saved number from step 4
       */
     ```
@@ -49,8 +49,10 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
     4. Navigate to SwiftLearning Project Build > Targets > SwiftLearning > Build Settings (ensure All and combined are selected directly below Build Settings)
     5. In the filter search bar enter PRODUCT_BUNDLE_IDENTIFIER
     6. Under Packaging find PRODUCT_BUNDLE_IDENTIFIER and click the empty line next to it, replacing it with $(BUNDLE_ID)
-    7. In the filter search bar enter DEVELOPMENT_TEAM
-    8. Under Signing find DEVELOPMENT_TEAM and click the empty line next to it, replacing it with $(DEVELOPMENT_TEAM_ID)
+    7. You should now see  \<Name\> (Personal Team) - $(DEVELOPMENT_TEAM_ID where the empty line was
+    8. In the filter search bar enter DEVELOPMENT_TEAM
+    9. Under Signing find DEVELOPMENT_TEAM and click the empty line next to it, replacing it with $(DEVELOPMENT_TEAM_ID)
+    10. You should now see your BUNDLE_ID where the empty line was
 
 5. Set up your phone for Developer Mode
     1. In your iPhone Settings navigate to Privacy & Security > Developer Mode, switch your phone to Developer Mode and restart it
