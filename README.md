@@ -45,7 +45,7 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
 
 4. Edit your build settings
     1. Navigate to SwiftLearning Project Build > Info > Configurations
-    2. Under Debug and Release for the SwiftLearning Project (not target) change None to AllBuilds.xcconfig
+    2. Under both Debug and Release for the SwiftLearning Project (not target) change None to AllBuilds.xcconfig
     4. Navigate to SwiftLearning Project Build > Targets > SwiftLearning > Build Settings
     5. In the filter search bar enter PRODUCT_BUNDLE_IDENTIFIER
     6. Under Packaging find PRODUCT_BUNDLE_IDENTIFIER and click the empty line next to it, replacing it with $(BUNDLE_ID)
