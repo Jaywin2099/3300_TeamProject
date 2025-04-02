@@ -56,6 +56,18 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
 
     > *You might have uncommited changes at this point. Those MUST be discarded before pushing anything else.*
 
+5. Set Up Firebase
+    1. Go to https://firebase.google.com/ and ensure you're signed into the Swifties gmail account
+    2. In the top right of the navbar click _Go To Console_
+    3. Click the SwiftLearning project
+    4. Click _+ Add App_ button underneath the SwiftLearning Project Overview
+    5. Select _Apple/IOS_ from the list of platforms
+    6. Enter your bundle_id, set your app nickname to be SwiftLearning-\<YOUR_FIRST_NAME_HERE\> and click _Register App_ (ignore App Store ID)
+    7. Download the GoogleService-Info.plist file and put it within the SwiftLearning directory (same location as AppDelegate)
+    8. Ignore everything else and click through
+  
+   > *XCode may say you have staged changes to commit at this point (in reference to your .plist file). UNSTAGE THESE CHANGES IMMEDIATELY!!! OTHERWISE THE API KEY WILL BE UPLOADED TO GITHUB*
+      
 6. Set up your phone for Developer Mode
     1. In your iPhone Settings navigate to Privacy & Security > Developer Mode, switch your phone to Developer Mode and restart it
     2. Connect your iPhone to your Mac via. usb/usb-c
