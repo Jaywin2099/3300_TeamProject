@@ -4,69 +4,50 @@ import RealityKit
 struct ContentView : View {
     
     @State private var view = "AR"
+    @State private var offsetX: CGFloat = 0
+    @State private var arActive: Bool = true // binded to pause/unpause in WorldViewContainer
     
     func onRightSwipe () -> Void {
         if (self.view == "AR") {
             self.view = "UI"
+            self.offsetX = UIScreen.main.bounds.width
+            self.arActive.toggle()
+            
+            withAnimation(.easeInOut(duration: 0.5)) {
+                
+                self.offsetX = 0
+            }
         }
     }
     
     func onLeftSwipe () -> Void {
         if (self.view == "UI") {
             self.view = "AR"
+            self.arActive.toggle() // unpauses ar view
+            self.offsetX = UIScreen.main.bounds.width
+            
+            withAnimation(.easeInOut(duration: 0.5)) {
+                self.offsetX = 0
+            }
         }
     }
     
     var body: some View {
         ZStack {
-            // behind everything is a cyan background
             Rectangle()
                 .fill(Color.cyan)
+                .edgesIgnoringSafeArea(.all)
             
             Text("ZStack")
+                .position(x: UIScreen.main.bounds.width / 2, y: 50)
             
-            // Either AR or UI
-            if self.view == "AR" {
-                var camera: Bool = false
-                
-                RealityView { content in
-                    
-                    // Create a cube model
-                    let model = Entity()
-                    let mesh = MeshResource.generateBox(size: 0.1, cornerRadius: 0.005)
-                    let material = SimpleMaterial(color: .blue, roughness: 0.15, isMetallic: true)
-                    model.components.set(ModelComponent(mesh: mesh, materials: [material]))
-                    model.position = [0, 0.05, 0]
-                    
-                    // Create horizontal plane anchor for the content
-                    let anchor = AnchorEntity(.plane(.horizontal, classification: .any, minimumBounds: SIMD2<Float>(0.2, 0.2)))
-                    anchor.addChild(model)
-                    
-                    // Add the horizontal plane anchor to the scene
-                    content.add(anchor)
-                    
-                    content.camera = .spatialTracking
-                }
-                
-            } else if self.view == "UI" {
-                VStack {
-                    Text("VStack")
-                        .font(.largeTitle)
-                    HStack {
-                        Text("HStack")
-                            .contentShape(Rectangle())
-                            .padding()
-                        
-                        Rectangle()
-                            .frame(height: 200)
-                            .foregroundColor(.red)
-                    }
-                }
-                .background(Rectangle().fill(Color.mint))
-                .frame(alignment: .top)
-            }
+            FactViewContainer()
+                .offset(x: view == "UI" ? -offsetX : offsetX - UIScreen.main.bounds.width)
+            
+            WorldViewContainer(isActive: $arActive)
+                .offset(x: view == "AR" ? offsetX : -offsetX + UIScreen.main.bounds.width)
+                                
         }
-        
         .edgesIgnoringSafeArea(.all)
         
         // applies gesture to ZStack

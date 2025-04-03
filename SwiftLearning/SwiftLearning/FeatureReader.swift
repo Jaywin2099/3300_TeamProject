@@ -1,6 +1,6 @@
 //
 // creates a reader that scans the AR view
-// and can be read by 
+// gathers all the necessary features for the AI call
 //
 
 import Foundation
