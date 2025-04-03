@@ -1,8 +1,24 @@
-//
-//  FactView.swift
-//  SwiftLearning
-//
-//  Created by Jacob Winter on 4/2/25.
-//
+import SwiftUI
 
-import Foundation
+struct FactViewContainer : View {
+    var body: some View {
+        VStack {
+            Text("VStack")
+                .font(.largeTitle)
+            
+            HStack {
+                Text("HStack")
+                    .contentShape(Rectangle())
+                    .padding()
+                
+                Rectangle()
+                    .frame(height: 200)
+                    .foregroundColor(.red)
+            }
+        }
+        
+        .background(Rectangle().fill(Color.mint))
+        .frame(alignment: .top)
+    }
+}
+
