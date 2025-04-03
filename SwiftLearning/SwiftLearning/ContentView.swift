@@ -14,7 +14,6 @@ struct ContentView : View {
             self.arActive.toggle()
             
             withAnimation(.easeInOut(duration: 0.5)) {
-                
                 self.offsetX = 0
             }
         }
