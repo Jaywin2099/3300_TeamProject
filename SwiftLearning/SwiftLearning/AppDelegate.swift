@@ -1,11 +1,8 @@
 import UIKit
 import SwiftUI
-import FirebaseCore
-import FirebaseFirestore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -18,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = UIHostingController(rootView: contentView)
         self.window = window
         window.makeKeyAndVisible()
-        FirebaseApp.configure()
         return true
     }
 
