@@ -1,8 +1,13 @@
-//
-//  Settings.swift
-//  SwiftLearning
-//
-//  Created by Jacob Winter on 4/4/25.
-//
+import SwiftUI
 
-import Foundation
+struct SettingsContainer: View {
+    var body: some View {
+        Rectangle()
+            .fill(Color.blue)
+    }
+}
+
+
+#Preview {
+    SettingsContainer()
+}

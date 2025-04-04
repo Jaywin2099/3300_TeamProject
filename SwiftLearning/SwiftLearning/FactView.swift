@@ -6,7 +6,7 @@ struct FactViewContainer : View {
             Text("VStack")
                 .font(.largeTitle)
             
-            HStack {
+            HStack { // horizontal stack
                 Text("HStack")
                     .contentShape(Rectangle())
                     .padding()
@@ -22,3 +22,6 @@ struct FactViewContainer : View {
     }
 }
 
+#Preview {
+    FactViewContainer()
+}

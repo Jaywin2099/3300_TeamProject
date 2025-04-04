@@ -1,8 +1,8 @@
-//
-//  ClassifyScreen.swift
-//  SwiftLearning
-//
-//  Created by Jacob Winter on 4/4/25.
-//
+import UIKit
+import ARKit
+import RealityKit
+import Vision
 
-import Foundation
+class ClassifyScreen: VNClassifyImageRequest {
+    
+}
