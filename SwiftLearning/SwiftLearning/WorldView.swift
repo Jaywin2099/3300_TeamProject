@@ -33,8 +33,6 @@ class WorldViewController: UIViewController, ARSessionDelegate {
     }
       
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        print(env.GEMINI_API_KEY)
-        
         // Capture the current frame as an image
         if let currentFrame = arSession.currentFrame {
             let capturedImage = currentFrame.capturedImage
