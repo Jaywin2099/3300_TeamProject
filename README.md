@@ -67,13 +67,29 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
     8. Ignore everything else and click through
   
    > *XCode may say you have staged changes to commit at this point (in reference to your .plist file). UNSTAGE THESE CHANGES IMMEDIATELY!!! OTHERWISE THE API KEY WILL BE UPLOADED TO GITHUB*
+
+6. Get your gemini API key
+    1. Go to <a href='https://aistudio.google.com/apikey'>https://aistudio.google.com/apikey</a>
+    2. You may have to log in
+    3. Hit the `Create API key` button
+    
+8. Create a Config.swift file
+    1. In the Swiftlearning directory right click and create a new file from templete
+    2. Name the file `Config.swift`
+    3. inside the file paste the following:
+   ```
+   struct env {
+      static let GEMINI_API_KEY = "YOUR_API_KEY"
+   }
+   ```
+    4. Then just replace `YOUR_API_KEY` with the api key you created in the previous step
       
-6. Set up your phone for Developer Mode
+9. Set up your phone for Developer Mode
     1. In your iPhone Settings navigate to Privacy & Security > Developer Mode, switch your phone to Developer Mode and restart it
     2. Connect your iPhone to your Mac via. usb/usb-c
     3. In your iPhone Settings navigate to VPN & Device Management and under DEVELOPER APP click your apple_id associated with your development team and trust Swift Learning
 
-7. Starting the app
+10. Starting the app
     1. Click the play/run button to the left of SwiftLearning
     2. Allow camera access on your phone when the app opens automatically and you're good to go!
 
