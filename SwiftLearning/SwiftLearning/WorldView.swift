@@ -41,7 +41,7 @@ class WorldViewController: UIViewController, ARSessionDelegate {
             guard let cgImage = CIContext().createCGImage(ciImage, from: ciImage.extent) else { return }
             guard let uiImage = UIImage(cgImage: cgImage).jpegData(compressionQuality: 0.8) else { return }
             
-            print("aquired image for classification")
+            print("acquired image for classification")
 
             // Call the asynchronous classification functions
             Task {
