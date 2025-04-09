@@ -6,16 +6,14 @@ import Vision
 class WorldViewController: UIViewController, ARSessionDelegate {
     
     var arView: ARView!
-    var visionQueue = DispatchQueue(label: "com.example.visionQueue")
-    var request: VNClassifyImageRequest!
-    
-    var lastClassificationDate = Date(timeIntervalSince1970: 0) // placeholder for how the image recognition is triggered
-    let classificationInterval: TimeInterval = 3 // sends frame every X seconds
+    var arSession: ARSession!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         arView = ARView(frame: view.bounds)
+        arSession = arView.session
+        
         arView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(arView)
         
@@ -23,46 +21,44 @@ class WorldViewController: UIViewController, ARSessionDelegate {
         arView.session.delegate = self
         arView.session.run(configuration)
         
-        setupVision()
-        
         // remove later
         arView.debugOptions = [.showAnchorOrigins, .showAnchorGeometry]
         
         let anchor = createAnchor()
         arView.scene.addAnchor(anchor)
-    }
-    
-    func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        let now = Date()
-        if now.timeIntervalSince(lastClassificationDate) > classificationInterval {
-            lastClassificationDate = now
-            classifyCurrentFrame(pixelBuffer: frame.capturedImage)
-        }
-    }
         
-    
-    func classifyCurrentFrame(pixelBuffer: CVPixelBuffer) {
-        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
-        visionQueue.async {
-            do {
-                try handler.perform([self.request])
-            } catch {
-                print("Vision error: \(error)")
-            }
-        }
+        // adds tap gesture
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        arView.addGestureRecognizer(tapGesture)
     }
-    
-    func setupVision() {
-        request = VNClassifyImageRequest { request, error in
-            guard let results = request.results as? [VNClassificationObservation] else { return }
+      
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        // Capture the current frame as an image
+        if let currentFrame = arSession.currentFrame {
+            let capturedImage = currentFrame.capturedImage
+            let ciImage = CIImage(cvPixelBuffer: capturedImage)
+
+            guard let cgImage = CIContext().createCGImage(ciImage, from: ciImage.extent) else { return }
+            guard let uiImage = UIImage(cgImage: cgImage).jpegData(compressionQuality: 0.8) else { return }
             
-            // confidence above 40% is recognized
-            if let topResult = results.first, topResult.confidence > 0.4 {
-                DispatchQueue.main.async {
-                    self.handleClassification(result: topResult)
+            print("acquired image for classification")
+
+            // Call the asynchronous classification functions
+            Task {
+                do {
+                    if let classificationResult = try await classifyImage(imageData: uiImage) {
+                        print("Image classification result on tap: \(classificationResult)")
+                        // Update your AR scene based on the classification
+                    }
+                } catch {
+                    print("Error classifying image on tap: \(error)")
                 }
             }
         }
+    }
+    
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        // idk if we need this anymore
     }
     
     func handleClassification(result: VNClassificationObservation) {
