@@ -1,12 +1,10 @@
 import UIKit
 import SwiftUI
-import FirebaseCore
-import FirebaseFirestore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var window: UIWindow?
+    // let databaseConnection = DatabaseConnection()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -18,7 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = UIHostingController(rootView: contentView)
         self.window = window
         window.makeKeyAndVisible()
-        FirebaseApp.configure()
+        
+        /*
+         
+        let db = databaseConnection.getDatabase()
+        let factsRef = db.collection("facts")
+        
+        factsRef.getDocuments { snapshot, error in
+                if let error = error {
+                    // Handle the error
+                    print("Error getting documents: \(error.localizedDescription)")
+                    return
+                }
+                
+                // Loop through the documents and print their data
+                for document in snapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                }
+            }
+        */
+        
         return true
     }
 
