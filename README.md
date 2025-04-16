@@ -89,11 +89,7 @@ We are currently developing an AR fact-of-the-day IOS app that also scans and re
     2. Connect your iPhone to your Mac via. usb/usb-c
     3. In your iPhone Settings navigate to VPN & Device Management and under DEVELOPER APP click your apple_id associated with your development team and trust Swift Learning
 
-10. Download Yolo Object Detection model
-    1. go to https://ml-assets.apple.com/coreml/models/Image/ObjectDetection/YOLOv3/YOLOv3.mlmodel
-    2. add the file to the Swift-Learning directory with the swift files
-    
-12. Starting the app
+10. Starting the app
     1. Click the play/run button to the left of SwiftLearning
     2. Allow camera access on your phone when the app opens automatically and you're good to go!
 
