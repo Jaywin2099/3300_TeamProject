@@ -4,37 +4,15 @@ import SwiftUI
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    // let databaseConnection = DatabaseConnection()
+    private let databaseConnection = DatabaseConnection()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
-
         // Use a UIHostingController as window root view controller.
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UIHostingController(rootView: contentView)
+        window.rootViewController = UIHostingController(rootView: ContentView(databaseConnection: self.databaseConnection))
         self.window = window
         window.makeKeyAndVisible()
-        
-        /*
-         
-        let db = databaseConnection.getDatabase()
-        let factsRef = db.collection("facts")
-        
-        factsRef.getDocuments { snapshot, error in
-                if let error = error {
-                    // Handle the error
-                    print("Error getting documents: \(error.localizedDescription)")
-                    return
-                }
-                
-                // Loop through the documents and print their data
-                for document in snapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                }
-            }
-        */
         
         return true
     }
